@@ -1,7 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
-
 import { Route, Redirect } from "react-router-dom";
+
+import DefaultLayout from "../pages/_layouts/default";
+import AuthLayout from "../pages/_layouts/auth";
 
 function RouteWrapper({
   component: Component,
@@ -18,7 +20,17 @@ function RouteWrapper({
     return <Redirect to='/home' />
   }
 
-  return <Route {...rest} component={Component} />;
+  const Layout = signed ? DefaultLayout : AuthLayout;
+
+  return (
+    <Route
+      {...rest}
+      render={props => (
+        <Layout>
+          <Component {...props} />
+        </Layout>
+      )} />
+  );
 }
 
 export default RouteWrapper;
