@@ -1,4 +1,7 @@
 import React, { useState } from 'react';
+import { Form, Input } from "@rocketseat/unform";
+import { handleLogin, handleRegister } from "./submit";
+import { validationLogin, validationRegister } from "./validationSchema";
 
 const LOGIN = "LOGIN";
 const REGISTER = "REGISTER";
@@ -19,30 +22,30 @@ function SignIn() {
         {/* <img alt='logo' /> */}
 
         {isLogin &&
-          <form>
-            <input type='email' placeholder='Seu e-mail' />
-            <input type='password' placeholder='Sua senha' />
+          <Form schema={validationLogin} onSubmit={handleLogin}>
+            <Input name='email' type='email' placeholder='Seu e-mail' />
+            <Input name='password' type='password' placeholder='Sua senha' />
 
             <button className='primary' type='submit'>Entrar</button>
             <button className='secundary' type='button' onClick={() => setTypeForm(REGISTER)}>
               Não tenho conta
           </button>
-          </form>
+          </Form>
         }
 
         {isRegister &&
-          <form>
-            <input placeholder='Seu nome' />
-            <input type='email' placeholder='Seu e-mail' />
+          <Form schema={validationRegister} onSubmit={handleRegister}>
+            <Input name='name' placeholder='Seu nome' />
+            <Input name='email' type='email' placeholder='Seu e-mail' />
 
-            <input type='password' placeholder='Sua senha' />
-            <input type='password' placeholder='Confirme sua senha' />
+            <Input name='password' type='password' placeholder='Sua senha' />
+            <Input name='confirmPassword' type='password' placeholder='Confirme sua senha' />
 
             <button className='primary' type='submit'>Criar conta</button>
             <button className='secundary' type='button' onClick={() => setTypeForm(LOGIN)}>
               Já possuo uma conta
           </button>
-          </form>
+          </Form>
         }
       </div>
     </>

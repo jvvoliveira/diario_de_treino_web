@@ -73,6 +73,13 @@ export const Content = styled.div`
           background: ${darken(0.05, '#292929')};
         }
       }
+
+      span{
+        color: #ff0000;
+        align-self: flex-start;
+        margin: 0 0 10px;
+        font-weight: bold;
+      }
     }
   }
 `;
