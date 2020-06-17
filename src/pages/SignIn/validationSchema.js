@@ -11,5 +11,7 @@ export const validationRegister = Yup.object().shape({
     .required("O e-mail é obrigatório"),
   name: Yup.string().required("O nome é obrigatório"),
   password: Yup.string().min(6, "Insira no mínimo 6 caracteres").required("A senha é obrigatória"),
-  confirmPassword: Yup.string().required("A confirmação da senha é obrigatória"),
+  confirmPassword: Yup.string()
+    .when('password', (password, field) => password ? field.required("A confirmação da senha é obrigatória")
+      .oneOf([Yup.ref('password')], "As senhas não estão iguais") : field),
 });

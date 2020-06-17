@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { darken } from "polished";
+import mosaicoPretoBranco from "../../../assets/mosaicoPretoBranco.jpg";
 
 export const Wrapper = styled.div`
   height: 100%;
@@ -12,6 +13,16 @@ export const Content = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
+  background-image: url(${mosaicoPretoBranco});
+  background-repeat: repeat-y;
+  background-position: 150% 50%;
+
+  @media(max-width: 1145px){
+    background-position: 200% 50%;
+  }
+  @media(max-width: 980px){
+    background-image: none;
+  }
 
   .titleArea{
     margin: 40px;
@@ -39,7 +50,7 @@ export const Content = styled.div`
       max-width: 300px;
       margin-top: 30px;
       input{
-        background: rgba(255, 255, 255, 0.1);
+        background: rgba(0, 0, 0, 0.4);
         border: 0;
         border-radius: 4px;
         height: 44px;
@@ -68,9 +79,9 @@ export const Content = styled.div`
         }
       }
       .secundary{
-        background: #292929;
+        background: transparent;
         &:hover{
-          background: ${darken(0.05, '#292929')};
+          color: #ee4540;
         }
       }
 
