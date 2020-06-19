@@ -1,16 +1,26 @@
 import React, { useState } from 'react';
+import { useDispatch } from "react-redux";
 import { Form, Input } from "@rocketseat/unform";
-import { handleLogin, handleRegister } from "./submit";
 import { validationLogin, validationRegister } from "./validationSchema";
+import { signInRequest } from "../../store/modules/auth/actions";
 
 const LOGIN = "LOGIN";
 const REGISTER = "REGISTER";
 
 function SignIn() {
+  const dispatch = useDispatch();
   const [typeForm, setTypeForm] = useState(LOGIN);
 
   const isLogin = typeForm === LOGIN;
   const isRegister = typeForm === REGISTER;
+
+  const handleLogin = ({ email, password }) => {
+    dispatch(signInRequest(email, password));
+  }
+
+  const handleRegister = (data) => {
+    console.log(data);
+  }
 
   return (
     <>
