@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+
 import { Form, Input } from "@rocketseat/unform";
 import { validationLogin, validationRegister } from "./validationSchema";
 import { signInRequest } from "../../store/modules/auth/actions";
@@ -9,6 +10,7 @@ const REGISTER = "REGISTER";
 
 function SignIn() {
   const dispatch = useDispatch();
+  const loading = useSelector(state => state.auth.loading)
   const [typeForm, setTypeForm] = useState(LOGIN);
 
   const isLogin = typeForm === LOGIN;
@@ -36,7 +38,7 @@ function SignIn() {
             <Input name='email' type='email' placeholder='Seu e-mail' />
             <Input name='password' type='password' placeholder='Sua senha' />
 
-            <button className='primary' type='submit'>Entrar</button>
+            <button className='primary' type='submit'>{loading ? "Carregando..." : "Entrar"}</button>
             <button className='secundary' type='button' onClick={() => setTypeForm(REGISTER)}>
               Não tenho conta
           </button>
