@@ -4,8 +4,8 @@ import mosaicoPretoBranco from "../../../assets/mosaicoPretoBranco.jpg";
 
 export const Wrapper = styled.div`
   height: 100%;
-  background: #292929;
-  color: #fff;
+  background: linear-gradient(#292929, #444);
+  color: #eee;
   display: flex;
 `;
 
@@ -13,9 +13,9 @@ export const Content = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
-  background-image: url(${mosaicoPretoBranco});
+  /* background-image: url(${mosaicoPretoBranco}); */
   background-repeat: repeat-y;
-  background-position: 150% 50%;
+  background-position: 180% 50%;
 
   @media(max-width: 1145px){
     background-position: 200% 50%;
@@ -56,7 +56,7 @@ export const Content = styled.div`
         height: 44px;
         padding: 0 15px;
         margin-bottom: 10px;
-        color: #fff;
+        color: #eee;
 
         &::placeholder{
           color: rgba(255, 255, 255, 0.7);
@@ -69,7 +69,7 @@ export const Content = styled.div`
         border: 0;
         border-radius: 4px;
         font-size: 16px;
-        color: #fff;
+        color: #eee;
         transition: background 0.2s;
       }
       .primary{
