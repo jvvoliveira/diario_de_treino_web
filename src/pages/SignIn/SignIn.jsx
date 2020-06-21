@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { Form, Input } from "@rocketseat/unform";
 import { validationLogin, validationRegister } from "./validationSchema";
-import { signInRequest } from "../../store/modules/auth/actions";
+import { signInRequest, signUpRequest } from "../../store/modules/auth/actions";
 
 const LOGIN = "LOGIN";
 const REGISTER = "REGISTER";
@@ -11,6 +11,7 @@ const REGISTER = "REGISTER";
 function SignIn() {
   const dispatch = useDispatch();
   const loading = useSelector(state => state.auth.loading)
+  console.log(loading, "loading");
   const [typeForm, setTypeForm] = useState(LOGIN);
 
   const isLogin = typeForm === LOGIN;
@@ -20,8 +21,8 @@ function SignIn() {
     dispatch(signInRequest(email, password));
   }
 
-  const handleRegister = (data) => {
-    console.log(data);
+  const handleRegister = ({ name, email, password }) => {
+    dispatch(signUpRequest(name, email, password));
   }
 
   return (
@@ -53,7 +54,7 @@ function SignIn() {
             <Input name='password' type='password' placeholder='Sua senha' />
             <Input name='confirmPassword' type='password' placeholder='Confirme sua senha' />
 
-            <button className='primary' type='submit'>Criar conta</button>
+            <button className='primary' type='submit'>{loading ? "Carregando..." : "Criar conta"}</button>
             <button className='secundary' type='button' onClick={() => setTypeForm(LOGIN)}>
               Já possuo uma conta
           </button>

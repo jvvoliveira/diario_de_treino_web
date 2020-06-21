@@ -1,4 +1,5 @@
 import { all, takeLatest, call, put } from "redux-saga/effects";
+import { toast } from "react-toastify";
 
 import history from "../../../services/history";
 import api from "../../../services/api";
@@ -15,18 +16,52 @@ export function* signIn({ payload }) {
     const { token, user } = response.data;
 
     if (!user.instructor) {
-      alert("Usuário não é instrutor");
+      toast.error("Usuário não é instrutor");
       return;
     }
+
+    api.defaults.headers.Authorization = `Bearer ${token}`;
 
     yield put(signSuccess(token, user));
 
     history.push('/home');
   } catch (error) {
+    toast.error("Falha na autenticação");
     yield put(signFailure());
   }
 }
 
+export function* signUp({ payload }) {
+  try {
+    const { name, email, password } = payload;
+
+    const response = yield call(api.post, "users", {
+      name,
+      email,
+      password,
+      instructor: true
+    });
+
+    history.push('/');
+  } catch (error) {
+    toast.error("Falha no cadastro");
+
+    yield put(signFailure());
+  }
+}
+
+export function setToken({ payload }) {
+  if (!payload) return;
+
+  const { token } = payload.auth;
+
+  if (token) {
+    api.defaults.headers.Authorization = `Bearer ${token}`;
+  }
+}
+
 export default all([
-  takeLatest("@auth/SIGN_IN_REQUEST", signIn)
+  takeLatest("persist/REHYDRATE", setToken),
+  takeLatest("@auth/SIGN_IN_REQUEST", signIn),
+  takeLatest("@auth/SIGN_UP_REQUEST", signUp)
 ]);
