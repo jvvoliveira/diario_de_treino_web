@@ -29,7 +29,7 @@ const Notifications = () => {
 
   function handleToggleVisible() {
     setVisible(!visible)
-    if (hasUnread && !visible) {
+    if (hasUnread && visible) {
       handleMarkAllAsRead();
     }
   }
@@ -47,7 +47,7 @@ const Notifications = () => {
       <NotificationList visible={visible}>
         <Scroll>
           {notifications.map(notification => (
-            <Notification key={notification._id}>
+            <Notification key={notification._id} unread={!notification.read}>
               <p>{notification.content}</p>
             </Notification>
           ))
