@@ -11,7 +11,6 @@ const REGISTER = "REGISTER";
 function SignIn() {
   const dispatch = useDispatch();
   const loading = useSelector(state => state.auth.loading)
-  console.log(loading, "loading");
   const [typeForm, setTypeForm] = useState(LOGIN);
 
   const isLogin = typeForm === LOGIN;

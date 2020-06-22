@@ -21,6 +21,12 @@ export function signUpRequest(name, email, password) {
 
 export function signFailure() {
   return {
-    type: "@auth/SIGN_FAILURE"
+    type: "@auth/SIGN_IN_FAILURE"
+  }
+}
+
+export function signOut() {
+  return {
+    type: "@auth/SIGN_OUT"
   }
 }

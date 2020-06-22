@@ -8,6 +8,7 @@ import { Container, Content, Profile, } from "./styles";
 
 const Header = () => {
   const profile = useSelector(state => state.user.profile);
+  
   return (
     <Container>
       <Content>
