@@ -5,9 +5,10 @@ export const StudentList = styled.ul`
   justify-content: space-around;
   margin: 10px;
   width: 90%;
+  flex-wrap: wrap;
 
   li{
-    margin: 20px;
+    margin: 10px;
   }
 `;
 

@@ -8,7 +8,9 @@ const Student = ({ student }) => {
   return(
     <li key={student.id}>
       <StudentInfo>
-        <img src={student.user.avatar.url} alt='profile'/> 
+        {student.user.avatar && 
+          <img src={student.user.avatar.url} alt='profile'/> 
+        }
         <div className='info'>
           <p>{student.user.name}</p>
           <p>{student.user.email}</p>
