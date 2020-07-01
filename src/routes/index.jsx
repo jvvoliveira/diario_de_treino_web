@@ -1,5 +1,5 @@
 import React from "react";
-import { Switch } from "react-router-dom";
+import { Switch, Redirect } from "react-router-dom";
 import Route from "./Route";
 
 import SignIn from "../pages/SignIn/SignIn";
@@ -14,6 +14,8 @@ function Routes() {
 
       <Route path='/home' component={Home} isPrivate />
       <Route path='/profile' component={Profile} isPrivate />
+
+      {/* <Redirect to='/home' /> */}
     </Switch>
   )
 
