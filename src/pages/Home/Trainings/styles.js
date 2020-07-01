@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const StudentList = styled.ul`
+export const TrainingList = styled.ul`
   display: flex;
   justify-content: space-around;
   margin: 10px;
@@ -12,9 +12,12 @@ export const StudentList = styled.ul`
   }
 `;
 
-export const StudentInfo = styled.div`
+export const TrainingInfo = styled.div`
   display: flex;
+  flex-direction: column;
   align-items: center;
+  background: #eee;
+  color: #292929;
   padding: 16px 32px;
   transition: box-shadow 0.3s;
 
@@ -24,19 +27,12 @@ export const StudentInfo = styled.div`
     cursor: pointer;
   }
 
-  img{
-    height: 50px;
-    width: 50px;
-    border-radius: 50%;
+  h3{
+    margin-bottom: 20px;
   }
 
-  .info{
-    /* border-left: 1px solid #ee4540; */
-    padding-left: 8px;
-    margin-left: 8px;
-    p{
-      font-size: 16px;
-      padding: 2px 0;
-    }
+  p{
+    margin: 10px 0;
   }
+
 `;

@@ -1,15 +1,18 @@
 import React, {useState, useEffect} from "react";
 import { toast } from "react-toastify";
+import { MdPerson } from "react-icons/md";
 import api from "../../../services/api";
 
 import {StudentList, StudentInfo} from "./styles";
 
 const Student = ({ student }) => {
   return(
-    <li key={student.id}>
+    <li>
       <StudentInfo>
-        {student.user.avatar && 
-          <img src={student.user.avatar.url} alt='profile'/> 
+        {student.user.avatar ? 
+          <img src={student.user.avatar.url} alt='profile'/>
+          :
+          <MdPerson color='#fff' size={50}/> 
         }
         <div className='info'>
           <p>{student.user.name}</p>
@@ -40,7 +43,7 @@ const Students = () => {
 
   return(
     <StudentList>
-      {data.map(student => <Student student={student}/>)}
+      {data.map(student => <Student key={student.id} student={student}/>)}
     </StudentList>
   )
 }
