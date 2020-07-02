@@ -18,7 +18,7 @@ export const TrainingInfo = styled.div`
   align-items: center;
   background: #eee;
   color: #292929;
-  padding: 16px 32px;
+  padding: 8px 16px;
   transition: box-shadow 0.3s;
 
   &:hover{

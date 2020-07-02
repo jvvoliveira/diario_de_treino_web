@@ -1,22 +1,24 @@
 import React, {useState, useEffect} from "react";
 import { toast } from "react-toastify";
 import { MdPerson } from "react-icons/md";
+import { withRouter } from "react-router-dom";
 import api from "../../../services/api";
 
 import {StudentList, StudentInfo} from "./styles";
 
-const Student = ({ student }) => {
+const Student = ({ student, history }) => {
+  const {user} = student;
   return(
     <li>
-      <StudentInfo>
-        {student.user.avatar ? 
-          <img src={student.user.avatar.url} alt='profile'/>
+      <StudentInfo onClick={() => history.push(`/trainings/${user.id}`)}>
+        {user.avatar ? 
+          <img src={user.avatar.url} alt='profile'/>
           :
           <MdPerson color='#fff' size={50}/> 
         }
         <div className='info'>
-          <p>{student.user.name}</p>
-          <p>{student.user.email}</p>
+          <p>{user.name}</p>
+          <p>{user.email}</p>
         </div>
       </StudentInfo>
     </li>
@@ -27,14 +29,13 @@ const loadStudents = async (setData) => {
   try{
     const response = await api.get('/students');
     setData(response.data);
-    console.log(response.data);
   }catch(error){
     console.log(error);
     toast.error(error);
   }
 }
 
-const Students = () => {
+const Students = ({history}) => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
@@ -43,9 +44,9 @@ const Students = () => {
 
   return(
     <StudentList>
-      {data.map(student => <Student key={student.id} student={student}/>)}
+      {data.map(student => <Student key={student.id} student={student} history={history}/>)}
     </StudentList>
   )
 }
 
-export default Students;
+export default withRouter(Students);

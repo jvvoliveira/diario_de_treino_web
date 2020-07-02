@@ -4,7 +4,7 @@ import MenuOptions from "./MenuOptions/MenuOptions";
 import {ALUNOS, TREINOS} from "./consts";
 import {Container, Content} from "./styles";
 import Students from "./Students/Students";
-import Trainings from "./Trainings/Trainings";
+import GroupTrainingsSession from "../../components/GroupTrainingSession/GroupTrainingSession";
 
 function Home() {
   const [selected, setSelected] = useState("ALUNOS");
@@ -17,7 +17,7 @@ function Home() {
       <MenuOptions selected={selected} setSelected={setSelected}/>
       <Content>
         {isStudents && <Students />}
-        {isTrainings && <Trainings />}
+        {isTrainings && <GroupTrainingsSession />}
       </Content>
     </Container>
   )
