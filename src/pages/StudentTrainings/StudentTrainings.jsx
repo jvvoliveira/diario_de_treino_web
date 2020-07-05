@@ -1,8 +1,8 @@
 import React, {useState, useEffect} from "react";
 import { withRouter } from "react-router-dom";
 import { toast } from "react-toastify";
-import GroupTrainingsSession from "../../../components/GroupTrainingSession/GroupTrainingSession";
-import api from "../../../services/api";
+import GroupTrainingsSession from "../../components/GroupTrainingSession/GroupTrainingSession";
+import api from "../../services/api";
 
 import {HeadingProfile} from "./styles";
 
@@ -28,14 +28,14 @@ const StudentTrainings = (props) => {
 
   return(
     <>
-    {student &&
-    <HeadingProfile>
-      <img src={student.avatar.url} alt='profile'/>
-      <h3>{student.name}</h3>
-      <p>{student.email}</p>
-    </HeadingProfile>
-    }
-    <GroupTrainingsSession userId={studentId}/>
+      {student &&
+      <HeadingProfile>
+        <img src={student.avatar.url} alt='profile'/>
+        <h3>{student.name}</h3>
+        <p>{student.email}</p>
+      </HeadingProfile>
+      }
+      <GroupTrainingsSession userId={studentId}/>
     </>
   )
 }

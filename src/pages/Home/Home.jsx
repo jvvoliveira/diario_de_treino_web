@@ -15,10 +15,8 @@ function Home() {
   return(
     <Container>
       <MenuOptions selected={selected} setSelected={setSelected}/>
-      <Content>
-        {isStudents && <Students />}
+        {isStudents && <Content><Students /></Content>}
         {isTrainings && <GroupTrainingsSession />}
-      </Content>
     </Container>
   )
 }

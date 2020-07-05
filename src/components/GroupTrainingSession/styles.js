@@ -1,18 +1,23 @@
 import styled from "styled-components";
 
-export const TrainingList = styled.ul`
+export const GroupTrainingList = styled.ul`
   display: flex;
   justify-content: space-around;
-  margin: 10px;
+  margin: 10px auto;
   width: 90%;
   flex-wrap: wrap;
 
   li{
     margin: 10px;
+    padding: 10px;
+    width: 240px;
+  }
+  li.actived{
+    border: 1px solid #ee4540;
   }
 `;
 
-export const TrainingInfo = styled.div`
+export const GroupInfo = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;

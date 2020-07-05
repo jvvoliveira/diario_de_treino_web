@@ -6,7 +6,7 @@ import SignIn from "../pages/SignIn/SignIn";
 
 import Home from "../pages/Home/Home";
 import Profile from "../pages/Profile/Profile";
-import StudentTrainings from "../pages/Home/StudentTrainings/StudentTrainings";
+import StudentTrainings from "../pages/StudentTrainings/StudentTrainings";
 
 function Routes() {
   return (
