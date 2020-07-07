@@ -1,5 +1,24 @@
 import styled from "styled-components";
 
+export const ButtonAddTraining = styled.button`
+    display: flex;
+    align-items: center;
+    padding: 8px 16px;
+    height: 44px;
+    font-size: 16px;
+
+    background: transparent;
+    border: 1px solid #ee4540;
+    border-radius: 4px;
+    color: #eee;
+    transition: color 0.2s;
+    font-weight: bold;
+
+    &:hover{
+      color: #ee4540;
+    }
+`;
+
 export const GroupTrainingList = styled.ul`
   display: flex;
   justify-content: space-around;

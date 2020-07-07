@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from "react";
 import { withRouter } from "react-router-dom";
 import { toast } from "react-toastify";
+import { MdPerson } from "react-icons/md";
 import GroupTrainingsSession from "../../components/GroupTrainingSession/GroupTrainingSession";
 import api from "../../services/api";
 
@@ -24,13 +25,15 @@ const StudentTrainings = (props) => {
     loadStudent(setStudent, studentId);
   },[])
 
-  console.log(student);
-
   return(
     <>
       {student &&
       <HeadingProfile>
-        <img src={student.avatar.url} alt='profile'/>
+         {student.avatar ? 
+          <img src={student.avatar.url} alt='profile'/>
+          :
+          <MdPerson color='#fff' size={120}/> 
+        }
         <h3>{student.name}</h3>
         <p>{student.email}</p>
       </HeadingProfile>

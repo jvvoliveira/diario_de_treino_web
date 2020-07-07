@@ -1,10 +1,8 @@
 import styled from "styled-components";
 
 export const CarouselContainer = styled.div`
-  /* text-align: center; */
   width: 80%;
   margin: 30px auto 0;
-  height: 400px;
 
   hr{
     border: 0;

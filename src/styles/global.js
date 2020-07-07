@@ -28,6 +28,11 @@ export default createGlobalStyle`
     font: 14px 'Roboto', sans-serif;
   }
 
+  body{
+    background: linear-gradient(90deg, #292929, #444);
+    color: #eee;
+  }
+
   a {
     text-decoration: none;
   }

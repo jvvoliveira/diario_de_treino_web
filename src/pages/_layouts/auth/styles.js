@@ -4,8 +4,6 @@ import mosaicoPretoBranco from "../../../assets/mosaicoPretoBranco.jpg";
 
 export const Wrapper = styled.div`
   height: 100%;
-  background: linear-gradient(#292929, #444);
-  color: #eee;
   display: flex;
 `;
 

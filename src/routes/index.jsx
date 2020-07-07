@@ -7,6 +7,7 @@ import SignIn from "../pages/SignIn/SignIn";
 import Home from "../pages/Home/Home";
 import Profile from "../pages/Profile/Profile";
 import StudentTrainings from "../pages/StudentTrainings/StudentTrainings";
+import CreateTraining from "../pages/Training/Create/CreateTraining";
 
 function Routes() {
   return (
@@ -15,7 +16,9 @@ function Routes() {
 
       <Route path='/home' component={Home} isPrivate />
       <Route path='/profile' component={Profile} isPrivate />
-      <Route path='/trainings/:studentId' component={StudentTrainings} isPrivate />
+      <Route path='/trainings/create' component={CreateTraining} isPrivate />
+      <Route path='/trainings/:studentId' exact component={StudentTrainings} isPrivate />
+      <Route path='/trainings/:studentId/create' component={CreateTraining} isPrivate />
 
       {/* <Redirect to='/home' /> */}
     </Switch>

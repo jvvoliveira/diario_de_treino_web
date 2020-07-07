@@ -1,9 +1,11 @@
 import React, {useState, useEffect} from "react";
 import { toast } from "react-toastify";
 import moment from "moment";
+import { withRouter } from "react-router-dom";
 
+import { MdAdd } from "react-icons/md";
 import api from "../../services/api";
-import { GroupTrainingList, GroupInfo } from "./styles";
+import { GroupTrainingList, GroupInfo, ButtonAddTraining } from "./styles";
 import TrainingCarousel from "./TrainingCarousel/TrainingCarousel";
 
 const Group = ({group, setTrainings, selectedIndex, setSelectedIndex}) => {
@@ -46,7 +48,7 @@ const loadTrainingGroups = async (setGroups, userId) => {
   }
 }
 
-const GroupTrainingsSession = ({userId}) => {
+const GroupTrainingsSession = ({userId, history}) => {
   const [groups, setGroups] = useState([]);
   const [trainings, setTrainings] = useState([]);
   const [selectedIndex, setSelectedIndex] = useState(null);
@@ -54,7 +56,14 @@ const GroupTrainingsSession = ({userId}) => {
   useEffect(() => {
     loadTrainingGroups(setGroups, userId);
   }, []);
-  console.log(groups);
+
+  const goCreateTraining = () => {
+    if(userId){
+      history.push(`/trainings/${userId}/create`);
+      return;
+    }
+    history.push('/trainings/create');
+  } 
 
   return(
     <>
@@ -68,6 +77,10 @@ const GroupTrainingsSession = ({userId}) => {
           setSelectedIndex={setSelectedIndex}
           /> 
         )}
+        <ButtonAddTraining type='button' onClick={goCreateTraining}>
+          <MdAdd color='#eee' size={30}/>
+          Adicionar treino
+        </ButtonAddTraining>
       </GroupTrainingList>
       <TrainingCarousel trainings={trainings}/>
     </>  
@@ -75,4 +88,4 @@ const GroupTrainingsSession = ({userId}) => {
 
 }
 
-export default GroupTrainingsSession;
+export default withRouter(GroupTrainingsSession);
