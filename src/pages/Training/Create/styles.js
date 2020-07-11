@@ -68,7 +68,19 @@ export const Container = styled.div`
         background: rgba(255, 255, 255, 0.2);
         margin: 10px 0 20px;
       }
+      span{
+        color: #ff0000;
+        align-self: flex-start;
+        margin: 0 0 10px;
+        font-weight: bold;
+      }
     }
+`;
+
+export const InputContainer = styled.div`
+  width: 30%;
+  display: flex;
+  flex-direction: column;
 `;
 
 export const ButtonArea = styled.div`
@@ -84,8 +96,5 @@ export const ExerciseContainer = styled.div`
   .exerciseInfo{
     display: flex;
     justify-content: space-around;
-    input{
-      width: 30%;
-    }
   }
 `;
