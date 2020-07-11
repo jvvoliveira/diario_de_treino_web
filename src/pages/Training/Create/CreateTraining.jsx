@@ -116,7 +116,7 @@ const handleSubmit = async (data) => {
       const {name: trainingName, exercises} = training;
       await api.post(`/training/${groupId}`, {name: trainingName, exercises});
     })
-    toast.success('Treino criado com sucesso!');
+    await toast.success('Treino criado com sucesso!');
     history.push('/home');
   }catch(error){
     console.log(error);

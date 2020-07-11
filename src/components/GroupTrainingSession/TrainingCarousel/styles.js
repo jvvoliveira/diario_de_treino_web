@@ -3,12 +3,18 @@ import styled from "styled-components";
 export const CarouselContainer = styled.div`
   width: 80%;
   margin: 30px auto 0;
+  height: 500px;
+  padding-bottom: 20px;
 
   hr{
     border: 0;
     height: 1px;
     background: rgba(255, 255, 255, 0.2);
     margin: 10px 0 20px;
+  }
+
+  h1{
+    margin-bottom: 30px;
   }
 `;
 

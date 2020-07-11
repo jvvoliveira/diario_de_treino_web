@@ -5,7 +5,7 @@ import { withRouter } from "react-router-dom";
 
 import { MdAdd } from "react-icons/md";
 import api from "../../services/api";
-import { GroupTrainingList, GroupInfo, ButtonAddTraining } from "./styles";
+import { GroupTrainingList, GroupInfo, ButtonAddTraining, ButtonArea } from "./styles";
 import TrainingCarousel from "./TrainingCarousel/TrainingCarousel";
 
 const Group = ({group, setTrainings, selectedIndex, setSelectedIndex}) => {
@@ -17,6 +17,7 @@ const Group = ({group, setTrainings, selectedIndex, setSelectedIndex}) => {
       const response = await api.get(`/training/${group.id}`);
       setTrainings(response.data);
       setSelectedIndex(group.id);
+      window.scrollTo(0, document.body.scrollHeight);
     }catch(error){
       console.log(error);
       toast.error(error);
@@ -67,6 +68,12 @@ const GroupTrainingsSession = ({userId, history}) => {
 
   return(
     <>
+    <ButtonArea>
+        <ButtonAddTraining type='button' onClick={goCreateTraining}>
+          <MdAdd color='#eee' size={30}/>
+          Adicionar treino
+        </ButtonAddTraining>
+      </ButtonArea>
       <GroupTrainingList>
         {groups.map(group => 
         <Group 
@@ -77,10 +84,6 @@ const GroupTrainingsSession = ({userId, history}) => {
           setSelectedIndex={setSelectedIndex}
           /> 
         )}
-        <ButtonAddTraining type='button' onClick={goCreateTraining}>
-          <MdAdd color='#eee' size={30}/>
-          Adicionar treino
-        </ButtonAddTraining>
       </GroupTrainingList>
       <TrainingCarousel trainings={trainings}/>
     </>  

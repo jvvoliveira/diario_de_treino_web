@@ -19,15 +19,21 @@ export const ButtonAddTraining = styled.button`
     }
 `;
 
+export const ButtonArea = styled.div`
+  display: flex;
+  justify-content: center;
+`;
+
 export const GroupTrainingList = styled.ul`
   display: flex;
   justify-content: space-around;
   margin: 10px auto;
-  width: 90%;
+  width: 80%;
   flex-wrap: wrap;
+  max-height: 100%;
+  overflow-y: auto;
 
   li{
-    margin: 10px;
     padding: 10px;
     width: 240px;
   }
@@ -43,6 +49,7 @@ export const GroupInfo = styled.div`
   background: #eee;
   color: #292929;
   padding: 8px 16px;
+  height: 100%;
   transition: box-shadow 0.3s;
 
   &:hover{

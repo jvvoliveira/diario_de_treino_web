@@ -50,7 +50,7 @@ const TrainingCarousel = ({trainings}) => {
 
 const empty = (
       <EmptyMessage>
-        Sem fichas disponíveis. Selecione um treino.
+        Sem fichas disponíveis. Selecione um treino não vazio.
       </EmptyMessage>
 )
 
@@ -64,6 +64,7 @@ const content = (
   return(
     <CarouselContainer>
       <hr/>
+      <h1>Fichas</h1>
       { trainings.length === 0 ? empty : content }    
     </CarouselContainer>
   )
