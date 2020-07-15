@@ -33,13 +33,16 @@ export const TrainingContainer = styled.div`
     cursor: pointer;
   }
 
-  h3{
-    margin-bottom: 20px;
-  }
-
   p{
     margin: 10px 0;
   }
+`;
+
+export const Title = styled.h1`
+  margin-bottom: 20px;
+  text-align: center;
+  color: #ee4540;
+  font-size: 32px;
 `;
 
 export const Exercise = styled.div`

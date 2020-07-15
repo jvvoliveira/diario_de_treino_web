@@ -20,17 +20,17 @@ export const ButtonAddTraining = styled.button`
 `;
 
 export const ButtonArea = styled.div`
-  display: flex;
-  justify-content: center;
+  width: 80%;
+  margin: auto;
+  padding: 0 10px;
 `;
 
 export const GroupTrainingList = styled.ul`
   display: flex;
-  justify-content: space-around;
   margin: 10px auto;
   width: 80%;
   flex-wrap: wrap;
-  max-height: 100%;
+  max-height: 400px;
   overflow-y: auto;
 
   li{
@@ -42,7 +42,8 @@ export const GroupTrainingList = styled.ul`
   }
 `;
 
-export const GroupInfo = styled.div`
+export const GroupContent = styled.div`
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -55,15 +56,36 @@ export const GroupInfo = styled.div`
   &:hover{
     transform: scale(1.1);
     box-shadow: 5px 5px 10px 2px rgba(239, 69, 64, 0.5);
-    cursor: pointer;
   }
 
   h3{
-    margin-bottom: 20px;
+    margin-bottom: 10px;
   }
 
   p{
-    margin: 10px 0;
+    margin: 20px 0;
   }
 
+`;
+
+export const GroupInfo = styled.div`
+  &:hover{
+    cursor: pointer;
+  }
+`;
+
+export const FooterGroup = styled.div`
+  position: absolute;
+  bottom: 2px;
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  border-top: 1px solid #292929;
+
+  button{
+    border: none;
+    &:hover{
+      border: 1px solid #292929;
+    }
+  }
 `;

@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import Slider from "react-slick";
 
 import { toast } from "react-toastify";
-import { CarouselContainer, TrainingContainer, Exercise, EmptyMessage } from "./styles";
+import { CarouselContainer, TrainingContainer, Exercise, EmptyMessage, Title } from "./styles";
 import api from "../../../services/api";
 
 const Training = ({training}) => {
@@ -64,7 +64,7 @@ const content = (
   return(
     <CarouselContainer>
       <hr/>
-      <h1>Fichas</h1>
+      <Title>Fichas</Title>
       { trainings.length === 0 ? empty : content }    
     </CarouselContainer>
   )

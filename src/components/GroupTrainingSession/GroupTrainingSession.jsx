@@ -3,12 +3,12 @@ import { toast } from "react-toastify";
 import moment from "moment";
 import { withRouter } from "react-router-dom";
 
-import { MdAdd } from "react-icons/md";
+import { MdAdd, MdDeleteForever } from "react-icons/md";
 import api from "../../services/api";
-import { GroupTrainingList, GroupInfo, ButtonAddTraining, ButtonArea } from "./styles";
+import { GroupTrainingList, GroupInfo, ButtonAddTraining, ButtonArea, FooterGroup, GroupContent } from "./styles";
 import TrainingCarousel from "./TrainingCarousel/TrainingCarousel";
 
-const Group = ({group, setTrainings, selectedIndex, setSelectedIndex}) => {
+const Group = ({group, setTrainings, selectedIndex, setSelectedIndex, groups, setGroups}) => {
   const activeClass = selectedIndex === group.id ? 'actived' : ''; 
 
   const dateFormat = group.validity ? moment(group.validity).format('DD/MM/YYYY') : "---";
@@ -19,19 +19,42 @@ const Group = ({group, setTrainings, selectedIndex, setSelectedIndex}) => {
       setSelectedIndex(group.id);
       window.scrollTo(0, document.body.scrollHeight);
     }catch(error){
-      console.log(error);
+      console.log(error.response);
       toast.error(error);
     }
   }
-  
 
+  const deleteGroup = async () => {
+    try{
+      await api.delete(`/group/${group.id}`);
+      const newGroups = [...groups];
+      const index = newGroups.findIndex(item => item.id === group.id);
+      newGroups.splice(index, 1);
+      setGroups(newGroups);
+      toast.success('Treino excluído com sucesso');
+    }catch(error){
+      if(error.response && error.response.data){
+        if(error.response.data.error === "You do not have permission"){
+          toast.error("Você não pode deletar treino dos alunos");
+        }
+      }
+    }
+  }
+  
   return (
     <li className={activeClass}>
-      <GroupInfo onClick={getTrainingsByGroup}>
-        <h3>{group.name}</h3>
-        <p>Meta de execuções: {group.goal}</p>
-        <p>Validade: {dateFormat}</p>
-      </GroupInfo>
+      <GroupContent>
+        <GroupInfo onClick={getTrainingsByGroup}>
+          <h3>{group.name}</h3>
+          {/* <p>Meta de execuções: {group.goal}</p> */}
+          <p>Validade: {dateFormat}</p>
+        </GroupInfo>
+        <FooterGroup>
+          <button onClick={deleteGroup}>
+            <MdDeleteForever size={20} color='#222'/>
+          </button>
+        </FooterGroup>
+      </GroupContent>
     </li>
   )
 }
@@ -82,6 +105,8 @@ const GroupTrainingsSession = ({userId, history}) => {
           setTrainings={setTrainings}
           selectedIndex={selectedIndex}
           setSelectedIndex={setSelectedIndex}
+          groups={groups}
+          setGroups={setGroups}
           /> 
         )}
       </GroupTrainingList>
